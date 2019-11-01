@@ -1,0 +1,39 @@
+*{
+  margin:0px;
+  padding:0px;
+  text-decoration: none;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.bigLi {
+  margin:40px;
+}
+
+.bigLi span{
+  display: block;
+  border-bottom:2px solid rgba(75,75,255,1);
+  font-weight:bold;
+  font-size:20px;
+  line-height: 30px;
+  margin-bottom:10px;
+  color:rgb(75,75,255);
+  width:350px;
+}
+
+.bigLi ol li{
+  list-style: initial;
+  margin-left:10px;
+  line-height: 20px;
+  margin-top : 10px;
+}
+
+.bigLi ul {
+  display: block;
+  margin-top:10px;
+}
+
+.bigLi ul li {
+  line-height: 16px;
+  margin-top: 7px;
+  margin-left : 35px;
+}

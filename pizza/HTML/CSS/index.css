@@ -1,0 +1,160 @@
+a:link {color:#FF9930;transition:0.5s;}
+a:visited {color:#FF9930}
+a:hover {color:#E8392C}
+a:active {color:#FF9930}
+
+
+*{
+  margin:0px;
+  padding:0px;
+  text-decoration: none;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+body{
+  background-color: #E8392C;
+  background-image:linear-gradient(90deg,#E8392C,darkorange);
+}
+
+.bgImg{
+  height: 50vh;
+  width:100%;
+  background: url(../IMG/BG/indexBackground.jpeg);
+  background-size: 100%;
+  transition:0.2s;
+  border-bottom:15px solid #FEB958;
+}
+
+@media screen and (max-width:600px) {
+  .bgImg{
+    height: 40vh;
+    background-size: 130vw;
+    background-position: center;
+  }
+}
+
+.contentBox {
+  background-color: white;
+  width:300px;
+  height:480px;
+  border-radius: 10px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align: center;
+}
+
+.titleIcon{
+  font-size:80px;
+  color:#FF5224;
+  display: block;
+  margin: 30px 0px 5px 0px;
+  transition: 0.5s;
+}
+
+.titleText{
+  display:block;
+  position: relative;
+  left:50%;
+  transform:translateX(-50%);
+  font-family: 'Staatliches', cursive;
+  color:#FF5224;
+  font-size:30px;
+  width:80%;
+  border-bottom:3px solid #0F7321;
+  margin-bottom:20px;
+  transition:0.5s;
+  line-height: 40px;
+}
+
+.contentBox:hover .titleText{
+  color:#E8392C;
+}
+
+.contentBox:hover .titleIcon{
+  color:#E8392C;
+}
+
+.idText,.pwText{
+  display:block;
+  position: relative;
+  left:50%;
+  transform: translateX(-50%);
+  width:80%;
+  text-align: left;
+  font-size: 12px;
+  line-height: 25px;
+}
+
+.inputField {
+  display: block;
+  width:80%;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  line-height: 25px;
+  font-size:16px;
+  border: none;
+  outline:none;
+}
+
+.inputDiv{
+  height:70px;
+}
+
+.submit{
+  width:80%;
+  height:35px;
+  line-height: 30px;
+  background-image: linear-gradient(90deg,#FF5224,#FF9930,#FF5224);
+  background-size: 200%;
+  background-position: left;
+  border-radius: 3px;
+  border:none;
+  font-size: 16px;
+  font-weight: bold;
+  color:white;
+  cursor:pointer;
+  transition: 0.4s;
+}
+
+.submit:hover {
+  background-position: right;
+}
+
+.footerDiv{
+  margin:20px 0px 20px 0px;
+}
+
+.forgotFooter a{
+  display:inline-block;
+  height: 30px;
+  font-size:14px;
+  line-height: 26px;
+  transition: 0.5s;
+  width:45%;
+  margin-bottom: 10px;
+}
+
+.forgotFooter a:hover{
+  font-size:15px;
+}
+
+.signUp{
+  font-size:16px;
+  margin-top:10px;
+}
+
+.footer{
+  text-align: center;
+  font-size:10px;
+  font-weight: bold;
+  color:white;
+  position: absolute;
+  height:6vh;
+  width:100vw;
+  top:94vh;
+  line-height: 6vh;
+  overflow: hidden;
+}
