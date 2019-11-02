@@ -5,19 +5,27 @@
   font-family: 'Nanum Gothic', sans-serif;
 }
 
-.bigLi {
-  margin:40px;
+div{
+  overflow: hidden;
 }
 
-.bigLi span{
+.bigLi {
+  margin:20px 30px;
+}
+
+.bigLi .subname{
   display: block;
-  border-bottom:2px solid rgba(75,75,255,1);
+  border-bottom:2px solid #E8392C;
   font-weight:bold;
   font-size:20px;
   line-height: 30px;
   margin-bottom:10px;
-  color:rgb(75,75,255);
-  width:350px;
+  color:#E8392C;
+  width:450px;
+}
+
+ol li {
+  list-style: none;
 }
 
 .bigLi ol li{
@@ -27,13 +35,201 @@
   margin-top : 10px;
 }
 
-.bigLi ul {
+.bigLi ul, .bigLi ol li ul {
   display: block;
   margin-top:10px;
 }
 
-.bigLi ul li {
+.bigLi ul li, .bigLi ol li ul li {
+  list-style: circle;
   line-height: 16px;
   margin-top: 7px;
   margin-left : 35px;
+}
+
+body{
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  background-image:url(../IMG/BG/signUpBackground.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contentBox{
+  width: 60vw;
+  height: 80.5vh;
+  background-color: rgb(249, 250, 245);
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius: 10px;
+  max-width: 700px;
+}
+
+.paper {
+  width: 90%;
+  height: 23vh;
+  left:50%;
+  position: relative;
+  transform:translateX(-50%);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 2px solid rgb(102, 102, 102);
+  border-top-left-radius: 10px;
+}
+
+.topDiv{
+  width:100%;
+  height:9vh;
+  background-image: linear-gradient(90deg,#E8392C,darkorange);
+  color:white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.step{
+  display:inline-block;
+  width:28%;
+  height: 80px;
+}
+
+.notYet{
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.step i {
+  font-size:30px;
+  display: block;
+  margin: 10px;
+}
+
+.titleText , .agreement{
+  display: block;
+  width:90%;
+  left:50%;
+  position: relative;
+  transform:translateX(-50%);
+  height:4vh;
+  line-height: 4vh;
+}
+
+.titleText{
+  font-size: 20px;
+  font-weight: bold;
+  color:rgb(99, 99, 99);
+  margin-top:1vh;
+}
+
+.agreement{
+  background-color: rgb(102, 102, 102);
+  border:2px solid rgb(102, 102, 102);
+  margin-top:-2px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color:rgb(201, 201, 201);
+  margin-bottom:1vh;
+  z-index: 1;
+}
+
+.agreement span{
+  display: block;
+  margin-left: 30px;
+}
+
+.footerDiv{
+  width:100%;
+  background-image: linear-gradient(90deg,#E8392C,darkorange,#E8392C);
+  background-size: 200%;
+  position:absolute;
+  height:6vh;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.footerDiv button{
+  line-height: 5vh;
+  width: 90%;
+  border: none;
+  background: none;
+  outline:none;
+  font-size: 3vh;
+  font-weight: bold;
+  color:white;
+}
+
+.footerDiv:hover{
+  background-position: right;
+}
+
+label{
+  font-size: 16px;
+}
+
+input[type="checkbox"] {
+    display:none;
+}
+
+input[type="checkbox"] + label .fa-check-square {
+    display: none;
+}
+
+input[type="checkbox"] + label .fa-square {
+    display: inline;
+}
+
+input[type="checkbox"]:checked + label .fa-check-square {
+    display: inline;
+}
+
+input[type="checkbox"]:checked + label .fa-square {
+    display: none;
+}
+
+.header{
+  position: absolute;
+  height:60px;
+  top:-30px;
+  line-height: 60px;
+  width:100%;
+  background-color: #E8392C;
+  font-family: 'Staatliches', cursive;
+  align-items: center;
+  text-align: center;
+  font-size:45px;
+  transition: 0.5s;
+}
+
+.header:hover{
+  top:0px;
+}
+
+.header a{font-family: 'Staatliches', cursive;}
+.header a:link {color:darkorange}
+.header a:visited {color:darkorange}
+.header a:active {color:darkorange}
+.header a:hover{color:white}
+
+.hiddenForm{
+  display: none;
+}
+
+.bg{
+  position: absolute;
+  top:0vh;
+  transition: 0.2s;
+  background-color:rgba(0, 0, 0, 0.6);
+  width:100%;
+  z-index: 0;
+  height: 100vh;
+}
+
+.bg:hover {
+  background-color:rgba(0, 0, 0, 0.5);
 }

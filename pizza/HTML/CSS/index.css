@@ -20,7 +20,8 @@ body{
   height: 50vh;
   width:100%;
   background: url(../IMG/BG/indexBackground.jpeg);
-  background-size: 100%;
+  background-size: cover;
+  background-position: 50% 35%;
   transition:0.2s;
   border-bottom:15px solid #FEB958;
 }

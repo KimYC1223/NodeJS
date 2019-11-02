@@ -9,4 +9,8 @@ module.exports = function (app) {
   app.get('/signUp', (req,res) => {
     res.render(__dirname+'/HTML/signUp.ejs')
   })
+
+  app.post('/signUp', (req,res) => {
+    res.render(__dirname+'/HTML/signUp2.ejs')
+  })
 }

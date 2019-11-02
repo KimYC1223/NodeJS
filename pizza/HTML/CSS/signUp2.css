@@ -1,0 +1,8 @@
+body{
+  margin: 0px;     /* ADD STYLE ! */
+  height: 100vh;
+  background-image:url(../IMG/BG/pizzaBackground.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
