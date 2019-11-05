@@ -64,7 +64,8 @@ body{
   left: 50%;
   top:50%;
   transform:translate(-50%,-50%);
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   max-width: 700px;
 }
 
@@ -151,6 +152,7 @@ body{
   text-align: center;
   align-items: center;
   transition: 0.2s;
+  z-index: 2;
 }
 
 .footerDiv button{

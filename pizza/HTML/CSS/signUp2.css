@@ -25,7 +25,7 @@ div{
 
 .contentBox{
   width: 60vw;
-  height: 80.5vh;
+  height: 80vh;
   background-color: rgb(249, 250, 245);
   position: absolute;
   left: 50%;
@@ -205,15 +205,21 @@ div{
   border:none;
 }
 
+.kakao {
+  height: 2.5vh;
+  line-height: 2.5vh;
+  background-color: red;
+}
+
 .mainContent img{
   display: inline-block;
-  width:3vh;
-  height: 3vh;
+  width:1vh;
+  height: 1vh;
 }
 
 .mainContent span{
-  display: block;
-  line-height: 3vh;
+  display: inline;
+  line-height: 1vh;
 }
 
 .userInput{
@@ -224,6 +230,8 @@ div{
   height: 5vh;
   border-top: none;
   border-bottom: none;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 label{
@@ -236,9 +244,23 @@ input[type="radio"] {
 }
 
 input[type="radio"] + label{
-    color: rgba(255, 255, 255, 0.53)
+    color: rgba(156, 156, 156, 1)
 }
 
 input[type="radio"]:checked + label{
-    color: rgba(255, 255, 255)
+    color: rgb(0, 0, 0)
 }
+
+.idCheck_true {
+  color:rgb(32, 162, 21);
+}
+
+.idCheck_idle{
+  color:rgb(116, 116, 116);
+}
+
+.idCheck_false {
+  color:rgb(185, 54, 54);
+}
+
+input[type="checkBox"] + label .checkIdle 
