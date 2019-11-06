@@ -1,4 +1,5 @@
 var mysql      = require('mysql')
+var mailSender = require('./mailSender.js')
 let queryString = require('querystring')
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -39,14 +40,15 @@ module.exports = (function() {
         let email = req.body.email
         let account =  req.body.account
 
-        connection.connect();
+        let rand = Math.floor(Math.random() * 100000) + 1
         queryString = 'INSERT INTO user (no,id,pw,name,sex,birth,address,email,confirm,account)'
-              + `VALUES (0,"${id}","${pw}","${name}","${sex}","${birth}",null,"${email}",0,"${account}");`
+              + `VALUES (${rand},"${id}","${pw}","${name}","${sex}","${birth}",null,"${email}",0,"${account}");`
 
+        mailSender.confirmUser(email,id,name,rand,'localhost:8000')
         connection.query(queryString, function(err,rows, fields) {
-          res.render(__dirname+'/HTML/mailSend.ejs')
+          res.render(__dirname+'/HTML/index.ejs')
         });
-        connection.end();
+
         return;
     }
   }
