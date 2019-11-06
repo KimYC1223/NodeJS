@@ -105,7 +105,7 @@ let nextBtn = () => {
     return;
   }
 
-  let str = inputAccount[0].value.split('@')
+  str = inputAccount[0].value.split('@')
   if (str.length != 2 || str[0].length == 0 || str[1].length == 0){
     alert('카카오 계좌 형식이 올바르지 않습니다.')
     inputEmail[0].focus();

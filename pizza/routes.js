@@ -1,7 +1,5 @@
 module.exports = function (app) {
-  let fs = require('fs')
   let mysqlScript = require('./mysqlScript.js')
-
 
   app.set('view engine','ejs');
   app.get('/', (req,res) => {
@@ -22,5 +20,9 @@ module.exports = function (app) {
 
   app.get('/checkId/:id', (req,res) => {
     mysqlScript.checkId(req,res)
+  })
+
+  app.post('/mailSend', (req,res) => {
+    mysqlScript.postEmail(req,res)
   })
 }
