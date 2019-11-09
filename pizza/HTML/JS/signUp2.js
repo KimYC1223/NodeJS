@@ -1,5 +1,6 @@
 let idCheckbox = document.getElementsByName('IDCheck')
 let inputID = document.getElementsByName('id')
+let inputID2 = document.getElementsByName('id2')
 let inputPW = document.getElementsByName('pw')
 let inputPW2 = document.getElementsByName('pw2')
 let inputEmail = document.getElementsByName('email')
@@ -8,11 +9,21 @@ let inputPhone = document.getElementsByName('phone')
 let inputName = document.getElementsByName('name')
 let inputAccount = document.getElementsByName('account')
 
-//idCheckBtn.onclick = () => {
-//  fetch("/idcheck").then( (data) => {
-//    alert(data);
-//  });
-//};
+let CheckIdBtn = () => {
+  let id = inputID[0].value;
+  fetch("/checkId/"+id,{method:"GET"}).then( (data) => {
+    data.json().then((jsonData)=>{
+      console.log(jsonData)
+      if (jsonData == null){
+        idCheckbox[0].checked = true;
+        inputID2[0].value = id;
+        alert(`ID ${id} : 사용 가능`)
+      } else {
+        alert(`사용이 불가능한 ID입니다.`)
+      }
+    })
+  })
+}
 
 let nextBtn = () => {
   if (!idCheckbox[0].checked) {

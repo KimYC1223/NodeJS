@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="./JS/md5.js"></script>
+  <script src="./JS/index.js"></script>
   <link rel="stylesheet" href="./CSS/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
@@ -18,16 +19,21 @@
     <span class="titleIcon"><i class="fas fa-pizza-slice"></i></span>
     <span class="titleText">ROBO PIZZA</span>
 
-    <form action="/loginProcess" method="post">
+    <form action="/loginProcess" method="post" id="loginForm">
       <div class="inputDiv">
         <span class="idText"><i class="fas fa-user"></i> 아이디</span>
-        <input type="text" class="inputField" id="inputID" placeholder="USER ID">
+        <input type="text" class="inputField" name="inputID" id="inputID" placeholder="USER ID">
       </div>
       <div class="inputDiv">
         <span class="pwText"><i class="fas fa-key"></i> 비밀번호</span>
-        <input type="password" class="inputField" id="inputPW" placeholder="PASSWORD">
+        <input type="password" class="inputField" name="inputPW"id="inputPW" placeholder="PASSWORD">
       </div>
-      <button class="submit" type="submit">로그인</button>
+      <button class="submit" type="button" onclick="loginBtn()">로그인</button>
+      <script>
+        let password = document.getElementById('inputPW')
+        password.value = calcMD5(calcMD5)
+        submitBtn()
+      </script>
     </form>
 
     <div class="footerDiv">

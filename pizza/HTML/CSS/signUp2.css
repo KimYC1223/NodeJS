@@ -263,4 +263,10 @@ input[type="radio"]:checked + label{
   color:rgb(185, 54, 54);
 }
 
-input[type="checkBox"] + label .checkIdle 
+.IDCheck, .textInputHidden {
+  display:none;
+}
+
+.idCheckBtn{
+  cursor:pointer;
+}

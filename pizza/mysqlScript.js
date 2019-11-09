@@ -31,7 +31,7 @@ module.exports = (function() {
       return;
     },
     postEmail: function (req,res) {
-        let id = req.body.id
+        let id = req.body.id2
         let pw = req.body.pw
         let name = req.body.name
         let sex = req.body.sex
@@ -44,13 +44,49 @@ module.exports = (function() {
         queryString = 'INSERT INTO user (no,id,pw,name,sex,birth,address,email,confirm,account)'
               + `VALUES (${rand},"${id}","${pw}","${name}","${sex}","${birth}",null,"${email}",0,"${account}");`
 
-        mailSender.confirmUser(email,id,name,rand,'localhost:8000')
-        connection.query(queryString, function(err,rows, fields) {
-          res.render(__dirname+'/HTML/index.ejs')
+        connection.query(queryString, function(error,rows, fields) {
+          if(error) {console.log(error); return;}
+          mailSender.confirmUser(email,id,name,rand,'localhost:8000')
+          res.render(__dirname+'/HTML/mailSend.ejs')
+        });
+
+        return;
+    },
+    confirmEmail: function (req,res) {
+        let id = req.query.id
+        let num = req.query.num
+
+        connection.query(`SELECT * FROM user WHERE id = '${id}';`, function(error,rows, fields) {
+          try{
+            let queryNum = rows[0].no
+            if (queryNum == num) {
+              connection.query(`UPDATE user SET confirm = 1 WHERE id ='${id}';`, function(error2,rows2,fields2) {
+                res.render(__dirname+'/HTML/signUp3.ejs')
+              })
+            } else {
+              res.render(__dirname+'/HTML/mailSend.ejs')
+            }
+          } catch (e) {
+            res.render(__dirname+'/HTML/mailSend.ejs')
+          }
+          return;
+        }
+      )
+    },loginProcess: function (req,res) {
+        let id = req.body.id
+        let pw = req.body.pw
+
+
+        queryString = 'select INTO user (no,id,pw,name,sex,birth,address,email,confirm,account)'
+              + `VALUES (${rand},"${id}","${pw}","${name}","${sex}","${birth}",null,"${email}",0,"${account}");`
+
+        connection.query(queryString, function(error,rows, fields) {
+          if(error) {console.log(error); return;}
+          mailSender.confirmUser(email,id,name,rand,'localhost:8000')
+          res.render(__dirname+'/HTML/mailSend.ejs')
         });
 
         return;
     }
   }
-
 })()

@@ -1,0 +1,3 @@
+let nextBtn = () => {
+  location.href="/"
+}

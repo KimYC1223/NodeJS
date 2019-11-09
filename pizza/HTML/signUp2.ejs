@@ -44,10 +44,11 @@
           <div class="form">
             <div class="col1 bgForm">아이디</div>
             <div class="col2"><input type="text" id="inputID" name="id"
-              placeholder="알파벳 대/소문자 6~20자" class="textInput"></tr>
+              placeholder="알파벳 대/소문자 6~20자" class="textInput">
+              <input type="text" name="id2" class="textInputHidden">
             </div>
             <div class="col1 bgForm">
-              <button onclick="check">중복 확인</button>
+              <span class="idCheckBtn" id="idTest" onclick="CheckIdBtn()">중복 확인</span>
               <input type="checkbox" name="IDCheck" class="IDCheck" id="idCheckbox">
             </div>
           </div>
