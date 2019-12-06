@@ -1,0 +1,10 @@
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\bin\Debug\OpenCV_CamTest.exe.config
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\bin\Debug\OpenCV_CamTest.exe
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\bin\Debug\OpenCV_CamTest.pdb
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\bin\Debug\OpenCvSharp.dll
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\obj\Debug\OpenCV_CamTest.csprojResolveAssemblyReference.cache
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\obj\Debug\OpenCV_CamTest.Form1.resources
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\obj\Debug\OpenCV_CamTest.Properties.Resources.resources
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\obj\Debug\OpenCV_CamTest.csproj.GenerateResource.Cache
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\obj\Debug\OpenCV_CamTest.exe
+c:\users\dg_work\documents\visual studio 2012\Projects\OpenCV_CamTest\OpenCV_CamTest\obj\Debug\OpenCV_CamTest.pdb
