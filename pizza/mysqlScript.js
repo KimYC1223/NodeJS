@@ -4,7 +4,7 @@ let queryString = require('querystring')
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'Linkurz1!',
+  password : 'zerostone1!',
   port     : 3306,
   database : 'pizzaMaker'
 });
@@ -82,7 +82,7 @@ module.exports = (function() {
 
         connection.query(queryString, function(error,rows, fields) {
           if(error) {console.log(error); return;}
-          mailSender.confirmUser(email,id,name,rand,'localhost:8000')
+          mailSender.confirmUser(email,id,name,rand,'yjserver@yjremote.iptime.org:8000')
           res.render(__dirname+'/HTML/mailSend.ejs')
         });
 
