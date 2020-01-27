@@ -46,7 +46,7 @@ module.exports = (function() {
 
         connection.query(queryString, function(error,rows, fields) {
           if(error) {console.log(error); return;}
-          mailSender.confirmUser(email,id,name,rand,'localhost:15000')
+          mailSender.confirmUser(email,id,name,rand,'yjserver@yjremote.iptime.org:15000')
           res.render(__dirname+'/HTML/mailSend.ejs')
         });
 
