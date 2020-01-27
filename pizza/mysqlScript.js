@@ -81,7 +81,7 @@ module.exports = (function() {
               + `VALUES (${rand},"${id}","${pw}","${name}","${sex}","${birth}",null,"${email}",0,"${account}");`
 
         connection.query(queryString, function(error,rows, fields) {
-          if(error) {console.log(error); return;}
+          if(error) {console.log(error); alert('로그인 실패.\n아이디와 패스워드를 확인하세요.'); return;}
           mailSender.confirmUser(email,id,name,rand,'yjserver@yjremote.iptime.org:15000')
           res.render(__dirname+'/HTML/mailSend.ejs')
         });

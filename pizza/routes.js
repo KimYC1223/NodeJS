@@ -6,6 +6,10 @@ module.exports = function (app) {
     res.render(__dirname+'/HTML/index.ejs')
   })
 
+  app.get('/signUp0', (req,res) => {
+    res.render(__dirname+'/HTML/signUp0.ejs')
+  })
+
   app.get('/signUp', (req,res) => {
     res.render(__dirname+'/HTML/signUp.ejs')
   })
