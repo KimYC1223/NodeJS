@@ -21,7 +21,7 @@ module.exports = (function() {
                 본 이메일 인증은 링커즈 회원가입을 위한 필수 사항입니다.<br><br>
                 아래 [이메일 인증하기] 버튼을 클릭한 후 <br><br>
                 홈페이지에서 남은 회원 가입 절차를 완료하여 주시기 바랍니다.<br><br>
-                <a href="${domain}/emailConfirm?id=${id}&num=${num}">
+                <a href="${domain}/mailConfirm?id=${id}&num=${num}">
                 <button style="width:250px;color:rgb(255, 255, 255);
                 background-color:rgb(233, 81, 16);border-radius:7px;
                 font-weight:bold";font-size:18px;>
