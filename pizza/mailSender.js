@@ -12,7 +12,7 @@ module.exports = (function() {
     confirmUser: (email,id,name,num,domain) => {
       let transporter = createTransport
       let mailOption = {
-        from : 'kimyc1223@gmail.com',
+        from : 'linkurzlinkus@gmail.com',
         to : email,
         subject : 'ROBO PIZZA 회원가입 승인 메일',
         html : `<H1>회원가입 인증 메일</H1><hr>
