@@ -73,7 +73,7 @@
             this.IpBox.Name = "IpBox";
             this.IpBox.Size = new System.Drawing.Size(124, 21);
             this.IpBox.TabIndex = 2;
-            this.IpBox.Text = "127.0.0.1";
+            this.IpBox.Text = "119.67.210.8";
             // 
             // label1
             // 

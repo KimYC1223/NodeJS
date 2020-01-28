@@ -26,8 +26,8 @@ namespace OpenCV_CamTest
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			m_cvCap = CvCapture.FromCamera(0);
-			m_cvCap.FrameWidth = 240;
-			m_cvCap.FrameHeight = 135;
+			m_cvCap.FrameWidth = 200;
+			m_cvCap.FrameHeight = 112;
 
 			//타이머 설정
 			timer1.Interval = 20;
