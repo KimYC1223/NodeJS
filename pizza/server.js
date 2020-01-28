@@ -8,6 +8,8 @@ var util          = require('util')
 var os            = require('os')
 var session       = require('express-session')
 var mysql         = require('mysql')
+let dgram         = require('dgram')
+let socket        = dgram.createSocket('udp4')
 
 app.use(session({
  secret: 'PIZZA',
