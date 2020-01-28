@@ -37,8 +37,16 @@
     </div>
 
     <div class="mainContent">
-      <img src="./IMG/test.bmp" class="CamPicture" id="webcamImg">
+      <img src="./IMG/test.bmp" class="CamPicture" id="webcamImg" name="webcamImg">
+        <script>
+        let img = document.getElementById('webcamImg')
+        let count = 1
 
+        setInterval(() => {
+          img.src = `./IMG/test.bmp?time=${count}`
+          count++
+        },150)
+        </script>
       <input type="checkbox" class="check" name="btn" value="btn1" id="btn1">
       <label for="btn1">BUTTON 1</label>
 
