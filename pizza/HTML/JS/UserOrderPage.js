@@ -1,4 +1,4 @@
-let img = document.getElementById('img')
+let img = document.getElementById('webcamImg')
 let count = 1
 
 setInterval(() => {
