@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname, './HTML')));
 
 // Save our port
 var port = process.env.PORT || 15000;
-let portUDP = process.env.PORT || 15001;
+let portUDP = process.env.PORT || 15002;
 socket.bind(portUDP)
-socket.on('listening', () => { console.log('listening event : 15001') })
+socket.on('listening', () => { console.log('listening event : 15002') })
 let frameCount = 0;
 socket.on('message', (msg, rinfo) => {
   frameCount ++;
