@@ -19,3 +19,13 @@ C:\Users\kimyc\OneDrive\바탕 화면\새 폴더\OpenCV_CamTest\obj\x86\Debug\Op
 C:\Users\kimyc\OneDrive\바탕 화면\새 폴더\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.csproj.CopyComplete
 C:\Users\kimyc\OneDrive\바탕 화면\새 폴더\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.exe
 C:\Users\kimyc\OneDrive\바탕 화면\새 폴더\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.pdb
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\bin\x86\Debug\OpenCV_CamTest.exe.config
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\bin\x86\Debug\OpenCV_CamTest.exe
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\bin\x86\Debug\OpenCV_CamTest.pdb
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.csprojAssemblyReference.cache
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.Form1.resources
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.Properties.Resources.resources
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.csproj.GenerateResource.cache
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.csproj.CopyComplete
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.exe
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.pdb

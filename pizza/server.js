@@ -25,6 +25,14 @@ app.use(express.static(path.join(__dirname, './HTML')));
 
 // Save our port
 var port = process.env.PORT || 15000;
+let portUDP = process.env.PORT || 15001;
+socket.bind(portUDP)
+socket.on('listening', () => { console.log('listening event') })
+socket.on('message', (msg, rinfo) => {
+  fs.writeFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+})
+socket.on('close', () => { console.log('close event') })
+
 
 // Start the server and listen on port
 app.listen(port,function(){
