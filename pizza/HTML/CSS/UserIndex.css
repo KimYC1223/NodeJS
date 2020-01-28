@@ -44,6 +44,22 @@ div{
   border-top-right-radius: 10px;
   align-items: center;
   text-align: center;
+  line-height: 9vh;
+}
+
+.topDiv table{
+  font-size: 12pt;
+  width:100%;
+  align-items: center;
+  text-align: center;
+}
+
+.topDiv .loginInfo{
+  width:30%;
+}
+
+.topDiv .topButton{
+  width:20%;
 }
 
 .footerDiv{
@@ -78,11 +94,10 @@ div{
   top:0px;
 }
 
-.header a{font-family: 'Staatliches', cursive;}
-.header a:link {color:darkorange}
-.header a:visited {color:darkorange}
-.header a:active {color:darkorange}
-.header a:hover{color:white}
+a:link {color:white}
+a:visited {color:white}
+a:active {color:white}
+a:hover{color:rgb(219, 193, 197)}
 
 .hiddenForm{
   display: none;
