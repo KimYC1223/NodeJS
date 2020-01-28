@@ -37,4 +37,9 @@ module.exports = function (app) {
   app.post('/loginProcess', (req,res) => {
     mysqlScript.loginProcess(req,res)
   })
+
+
+  app.get('/UserOrderPage', (req,res) => {
+    res.render(__dirname+'/HTML/UserOrderPage.ejs')
+  })
 }
