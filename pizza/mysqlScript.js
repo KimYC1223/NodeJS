@@ -3,8 +3,8 @@ var mailSender = require('./mailSender.js')
 let queryString = require('querystring')
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : 'zerostone1!',
+  user     : 'input user name',
+  password : 'input user password',
   port     : 3306,
   database : 'pizzaMaker'
 });
