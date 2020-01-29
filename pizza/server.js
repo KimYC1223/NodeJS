@@ -10,6 +10,7 @@ var session       = require('express-session')
 var mysql         = require('mysql')
 let dgram         = require('dgram')
 let socket        = dgram.createSocket('udp4')
+let sendingSocket = dgram.createSocket('udp4');
 
 app.use(session({
  secret: 'PIZZA',
@@ -18,6 +19,22 @@ app.use(session({
 }));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })); //
+
+
+app.get('/sendingUDP', (req,res) => {
+  let msg = new Buffer(req.param('str'));
+  sendingSocket.send(msg, 0, msg.length, 15003, '127.0.0.1',
+      function(err) {
+          if ( err ) {
+              console.log('UDP message send error', err);
+              return;
+          }
+          console.log(`Msg \'${req.param('str')}\' Sending Complete... `);
+      }
+  );
+
+  res.send(`Msg \'${req.param('str')}\' Sending Complete... `);
+})
 
 
 
@@ -37,6 +54,7 @@ socket.on('message', (msg, rinfo) => {
   fs.writeFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
 })
 socket.on('close', () => { console.log('close event') })
+
 
 
 // Start the server and listen on port

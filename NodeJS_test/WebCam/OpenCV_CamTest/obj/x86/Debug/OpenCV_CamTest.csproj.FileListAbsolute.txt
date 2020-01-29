@@ -29,3 +29,4 @@ C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.csp
 C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.csproj.CopyComplete
 C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.exe
 C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.pdb
+C:\src\NodeJS\NodeJS_test\WebCam\OpenCV_CamTest\obj\x86\Debug\OpenCV_CamTest.csproj.CoreCompileInputs.cache

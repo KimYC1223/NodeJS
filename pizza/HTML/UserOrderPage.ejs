@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./CSS/UserOrderPage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
-  <script src="./JS/UserOrderPage.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -38,15 +38,6 @@
 
     <div class="mainContent">
       <img src="./IMG/test.bmp" class="CamPicture" id="webcamImg" name="webcamImg">
-        <script>
-        let img = document.getElementById('webcamImg')
-        let count = 1
-
-        setInterval(() => {
-          img.src = `./IMG/test.bmp?time=${count}`
-          count++
-        },150)
-        </script>
       <input type="checkbox" class="check" name="btn" value="btn1" id="btn1">
       <label for="btn1">BUTTON 1</label>
 
@@ -61,8 +52,10 @@
 
       <input type="checkbox" class="check" name="btn" value="btn5" id="btn5">
       <label for="btn5">BUTTON 5</label>
-      <span class="logText">A log will print here.</span>
-      <div class="sendBtn">Send Data</div>
+      <span class="logText" id="logging">A log will print here.</span>
+      <div class="sendBtn" id="sendingBtn">Send Data</div>
+
+
     </div>
 
     <div class="footerDiv">
@@ -70,5 +63,7 @@
     </div>
   </div>
 
+
+  <script src="./JS/UserOrderPage.js"></script>
 </body>
 </html>

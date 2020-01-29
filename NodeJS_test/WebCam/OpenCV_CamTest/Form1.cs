@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Drawing.Imaging;
 using OpenCvSharp;
 
 namespace OpenCV_CamTest
@@ -17,6 +18,8 @@ namespace OpenCV_CamTest
 	{
 		IplImage m_cvImg;
 		CvCapture m_cvCap;
+
+        bool isSending = false;
 
 		public Form1()
 		{
@@ -41,17 +44,24 @@ namespace OpenCV_CamTest
 		{
 			//카메라에서 프레임 가져온다.
 			m_cvImg = m_cvCap.QueryFrame();
-			//IplImage을 비트맵으로 전환
-			pictureBox1.Image = m_cvImg.ToBitmap();
-		}
+            //IplImage을 비트맵으로 전환
+            pictureBox1.Image = m_cvImg.ToBitmap();
 
-        private void SendBtn_Click(object sender, EventArgs e) {
+            m_cvImg.ToBitmap().Save("c:\\test\\save.jpeg", ImageFormat.Jpeg);
+
             UdpClient cli = new UdpClient();
             string serverIp = IpBox.Text;
             string portStr = PortBox.Text;
             int port = Int32.Parse(portStr);
             byte[] datagram = converterDemo(pictureBox1.Image);
             cli.Send(datagram, datagram.Length, serverIp, port);
+        }
+
+        private void SendBtn_Click(object sender, EventArgs e) {
+            
+
+            isSending = !isSending;
+            if ()
         }
 
         public static byte[] converterDemo(Image x) {
