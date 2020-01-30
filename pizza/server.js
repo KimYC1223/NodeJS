@@ -74,6 +74,7 @@ socket.on('message', (msg, rinfo) => {
       frameSmallCount++;
       console.log(frameCount + `frame load Done... (${msg.length}) [${frameSmallCount}]`);
       fs.appendFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+      flag = false;
     }
   }
 
