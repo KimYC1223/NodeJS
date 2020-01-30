@@ -56,7 +56,7 @@ socket.on('message', (msg, rinfo) => {
     if (rinfo.length != 1472){
       frameCount ++;
       frameSmallCount = 0;
-      console.log(frameCount + `frame load Done... (${flag}) [${frameSmallCount}]`);
+      console.log(frameCount + `frame load Done... (${rinfo.length}) [${frameSmallCount}]`);
       fs.writeFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
     } else {
       frameCount ++;
@@ -76,9 +76,7 @@ socket.on('message', (msg, rinfo) => {
       fs.appendFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
     }
   }
-  frameCount ++;
-  console.log(frameCount);
-  fs.appendFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+
 })
 socket.on('close', () => { console.log('close event') })
 

@@ -37,6 +37,8 @@ namespace OpenCV_CamTest
 			timer1.Enabled = true;
         }
 
+        
+
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			//카메라에서 프레임 가져온다.
