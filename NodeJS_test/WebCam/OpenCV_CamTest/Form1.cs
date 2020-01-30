@@ -29,15 +29,12 @@ namespace OpenCV_CamTest
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			m_cvCap = CvCapture.FromCamera(0);
-			m_cvCap.FrameWidth = 200;
-			m_cvCap.FrameHeight = 112;
+			m_cvCap.FrameWidth = 640;
+			m_cvCap.FrameHeight = 360;
 
 			//타이머 설정
-			timer1.Interval = 20;
+			timer1.Interval = 50;
 			timer1.Enabled = true;
-
-            timer2.Interval = 200;
-            timer2.Enabled = true;
         }
 
 		private void timer1_Tick(object sender, EventArgs e)
@@ -47,21 +44,36 @@ namespace OpenCV_CamTest
             //IplImage을 비트맵으로 전환
             pictureBox1.Image = m_cvImg.ToBitmap();
 
-            m_cvImg.ToBitmap().Save("c:\\test\\save.jpeg", ImageFormat.Jpeg);
+            if (!isSending) return;
 
             UdpClient cli = new UdpClient();
             string serverIp = IpBox.Text;
             string portStr = PortBox.Text;
             int port = Int32.Parse(portStr);
-            byte[] datagram = converterDemo(pictureBox1.Image);
-            cli.Send(datagram, datagram.Length, serverIp, port);
+
+            byte[] sendingData = converterDemo(pictureBox1.Image);
+            int dataLen = sendingData.Length / 1472;
+            int remain = sendingData.Length % 1472;
+
+            for (int i = 0; i <= dataLen; i++) {
+                if ( i == dataLen) {
+                    if ( remain != 0) {
+                        byte[] datagram = new byte[remain];
+                        Buffer.BlockCopy(sendingData,1472 * i, datagram,0 ,remain);
+                    }
+                }else {
+                    byte[] datagram = new byte[1472];
+                    Buffer.BlockCopy(sendingData, 1472 * i, datagram, 0, 1472);
+                    cli.Send(datagram, datagram.Length, serverIp, port);
+                }
+            }
         }
 
+        
         private void SendBtn_Click(object sender, EventArgs e) {
-            
-
             isSending = !isSending;
-            if ()
+            label5.Text = (isSending)? "연결대기":"송신중";
+            SendBtn.Text = (isSending) ? "중지" : "전송";
         }
 
         public static byte[] converterDemo(Image x) {

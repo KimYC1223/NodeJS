@@ -48,7 +48,7 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pictureBox1.Location = new System.Drawing.Point(13, 47);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 150);
+            this.pictureBox1.Size = new System.Drawing.Size(640, 360);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -59,7 +59,7 @@
             // 
             // SendBtn
             // 
-            this.SendBtn.Location = new System.Drawing.Point(127, 233);
+            this.SendBtn.Location = new System.Drawing.Point(567, 413);
             this.SendBtn.Name = "SendBtn";
             this.SendBtn.Size = new System.Drawing.Size(86, 29);
             this.SendBtn.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             // IpBox
             // 
-            this.IpBox.Location = new System.Drawing.Point(89, 206);
+            this.IpBox.Location = new System.Drawing.Point(91, 416);
             this.IpBox.Name = "IpBox";
             this.IpBox.Size = new System.Drawing.Size(124, 21);
             this.IpBox.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Info;
-            this.label1.Location = new System.Drawing.Point(11, 209);
+            this.label1.Location = new System.Drawing.Point(12, 421);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 12);
             this.label1.TabIndex = 3;
@@ -89,7 +89,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(11, 241);
+            this.label2.Location = new System.Drawing.Point(232, 421);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 4;
@@ -97,7 +97,7 @@
             // 
             // PortBox
             // 
-            this.PortBox.Location = new System.Drawing.Point(82, 238);
+            this.PortBox.Location = new System.Drawing.Point(291, 416);
             this.PortBox.Name = "PortBox";
             this.PortBox.Size = new System.Drawing.Size(42, 21);
             this.PortBox.TabIndex = 5;
@@ -135,7 +135,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.label5.Location = new System.Drawing.Point(12, 275);
+            this.label5.Location = new System.Drawing.Point(504, 425);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 12);
             this.label5.TabIndex = 9;
@@ -147,7 +147,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(225, 299);
+            this.ClientSize = new System.Drawing.Size(665, 450);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

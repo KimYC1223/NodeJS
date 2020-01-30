@@ -48,10 +48,37 @@ let portUDP = process.env.PORT || 15001;
 socket.bind(portUDP)
 socket.on('listening', () => { console.log('listening event : 15001') })
 let frameCount = 0;
+let flag = false;
+let frameSmallCount = 0;
 socket.on('message', (msg, rinfo) => {
+
+  if (flag == false) {
+    if (rinfo.length != 1472){
+      frameCount ++;
+      frameSmallCount = 0;
+      console.log(frameCount + `frame load Done... (${flag}) [${frameSmallCount}]`);
+      fs.writeFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+    } else {
+      frameCount ++;
+      frameSmallCount = 0;
+      console.log(frameCount + `frame load Start... (1472) [${frameSmallCount}]`);
+      fs.writeFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+      flag = true;
+    }
+  } else {
+    if (rinfo.length == 1472) {
+      frameSmallCount++;
+      console.log(frameCount + `frame loading... (1472) [${frameSmallCount}]`);
+      fs.appendFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+    } else {
+      frameSmallCount++;
+      console.log(frameCount + `frame load Done... (${rinfo.length}) [${frameSmallCount}]`);
+      fs.appendFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+    }
+  }
   frameCount ++;
   console.log(frameCount);
-  fs.writeFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
+  fs.appendFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
 })
 socket.on('close', () => { console.log('close event') })
 
