@@ -50,9 +50,11 @@ socket.on('listening', () => { console.log('listening event : 15001') })
 let frameCount = 0;
 let flag = false;
 let frameSmallCount = 0;
+let timer
 socket.on('message', (msg, rinfo) => {
 
   if (flag == false) {
+    timer = new Date()
     if (msg.length != 1472){
       frameCount ++;
       frameSmallCount = 0;
@@ -61,7 +63,7 @@ socket.on('message', (msg, rinfo) => {
     } else {
       frameCount ++;
       frameSmallCount = 0;
-      console.log(frameCount + `frame load Start... (1472) [${frameSmallCount}]`);
+      console.log(frameCount + `frame load Start... (${msg.length}) [${frameSmallCount}]`);
       fs.writeFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
       flag = true;
     }
@@ -75,6 +77,8 @@ socket.on('message', (msg, rinfo) => {
       console.log(frameCount + `frame load Done... (${msg.length}) [${frameSmallCount}]`);
       fs.appendFile(`${__dirname}/HTML/IMG/test.bmp`,msg,function(error){if(error)console.log(error)})
       flag = false;
+      let timer2 = new Date()
+      console.log(`Execution time : ${timer2 - timer}`)
     }
   }
 
