@@ -29,11 +29,11 @@ namespace OpenCV_CamTest
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			m_cvCap = CvCapture.FromCamera(0);
-			m_cvCap.FrameWidth = 640;
-			m_cvCap.FrameHeight = 360;
+			m_cvCap.FrameWidth = 472;
+            m_cvCap.FrameHeight = 240;
 
 			//타이머 설정
-			timer1.Interval = 50;
+			timer1.Interval = 120;
 			timer1.Enabled = true;
         }
 
@@ -56,12 +56,14 @@ namespace OpenCV_CamTest
             byte[] sendingData = converterDemo(pictureBox1.Image);
             int dataLen = sendingData.Length / 1472;
             int remain = sendingData.Length % 1472;
+            label6.Text = sendingData.Length.ToString() + " ... " + dataLen + " / " + remain;
 
             for (int i = 0; i <= dataLen; i++) {
                 if ( i == dataLen) {
                     if ( remain != 0) {
                         byte[] datagram = new byte[remain];
                         Buffer.BlockCopy(sendingData,1472 * i, datagram,0 ,remain);
+                        cli.Send(datagram, datagram.Length, serverIp, port);
                     }
                 }else {
                     byte[] datagram = new byte[1472];

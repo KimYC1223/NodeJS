@@ -40,6 +40,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pictureBox1.Location = new System.Drawing.Point(13, 47);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(640, 360);
+            this.pictureBox1.Size = new System.Drawing.Size(472, 240);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -59,7 +60,7 @@
             // 
             // SendBtn
             // 
-            this.SendBtn.Location = new System.Drawing.Point(567, 413);
+            this.SendBtn.Location = new System.Drawing.Point(399, 11);
             this.SendBtn.Name = "SendBtn";
             this.SendBtn.Size = new System.Drawing.Size(86, 29);
             this.SendBtn.TabIndex = 1;
@@ -69,7 +70,7 @@
             // 
             // IpBox
             // 
-            this.IpBox.Location = new System.Drawing.Point(91, 416);
+            this.IpBox.Location = new System.Drawing.Point(91, 297);
             this.IpBox.Name = "IpBox";
             this.IpBox.Size = new System.Drawing.Size(124, 21);
             this.IpBox.TabIndex = 2;
@@ -79,7 +80,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Info;
-            this.label1.Location = new System.Drawing.Point(12, 421);
+            this.label1.Location = new System.Drawing.Point(12, 302);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 12);
             this.label1.TabIndex = 3;
@@ -89,7 +90,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(232, 421);
+            this.label2.Location = new System.Drawing.Point(232, 302);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 4;
@@ -97,7 +98,7 @@
             // 
             // PortBox
             // 
-            this.PortBox.Location = new System.Drawing.Point(291, 416);
+            this.PortBox.Location = new System.Drawing.Point(291, 297);
             this.PortBox.Name = "PortBox";
             this.PortBox.Size = new System.Drawing.Size(42, 21);
             this.PortBox.TabIndex = 5;
@@ -135,19 +136,32 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.label5.Location = new System.Drawing.Point(504, 425);
+            this.label5.Location = new System.Drawing.Point(328, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 12);
             this.label5.TabIndex = 9;
             this.label5.Text = "연결대기";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.ForeColor = System.Drawing.Color.HotPink;
+            this.label6.Location = new System.Drawing.Point(350, 302);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 12);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "연결대기";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(665, 450);
+            this.ClientSize = new System.Drawing.Size(500, 326);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -182,6 +196,7 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
