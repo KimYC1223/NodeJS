@@ -11,13 +11,15 @@ using System.Net;
 using System.Net.Sockets;
 using System.Drawing.Imaging;
 using OpenCvSharp;
+using System.IO;
 
 namespace OpenCV_CamTest
 {
 	public partial class Form1 : Form
 	{
 		IplImage m_cvImg;
-		CvCapture m_cvCap;
+        CvCapture m_cvCap;
+        TcpClient cli;
 
         bool isSending = false;
 
@@ -46,30 +48,22 @@ namespace OpenCV_CamTest
             //IplImage을 비트맵으로 전환
             pictureBox1.Image = m_cvImg.ToBitmap();
 
-            if (!isSending) return;
+            if (!isSending && cli == null) return;
 
-            UdpClient cli = new UdpClient();
-            string serverIp = IpBox.Text;
-            string portStr = PortBox.Text;
-            int port = Int32.Parse(portStr);
+            byte[] sendingData = JPEPByteArray(pictureBox1.Image);
+            label6.Text = "JPEG Byte : " + sendingData.Length;
+            NetworkStream stream = cli.GetStream();
+            stream.Write(sendingData, 0, sendingData.Length);
+            stream.Close();
+        }
 
-            byte[] sendingData = converterDemo(pictureBox1.Image);
-            int dataLen = sendingData.Length / 1472;
-            int remain = sendingData.Length % 1472;
-            label6.Text = sendingData.Length.ToString() + " ... " + dataLen + " / " + remain;
-
-            for (int i = 0; i <= dataLen; i++) {
-                if ( i == dataLen) {
-                    if ( remain != 0) {
-                        byte[] datagram = new byte[remain];
-                        Buffer.BlockCopy(sendingData,1472 * i, datagram,0 ,remain);
-                        cli.Send(datagram, datagram.Length, serverIp, port);
-                    }
-                }else {
-                    byte[] datagram = new byte[1472];
-                    Buffer.BlockCopy(sendingData, 1472 * i, datagram, 0, 1472);
-                    cli.Send(datagram, datagram.Length, serverIp, port);
-                }
+        public byte[] JPEPByteArray(Image image) {
+            using (MemoryStream memoryStream = new MemoryStream()) {
+                image.Save(memoryStream, ImageFormat.Jpeg);
+                byte[] returnByte = new byte[memoryStream.Length];
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                memoryStream.Read(returnByte, 0, returnByte.Length);
+                return returnByte;
             }
         }
 
@@ -78,12 +72,10 @@ namespace OpenCV_CamTest
             isSending = !isSending;
             label5.Text = (isSending)? "연결대기":"송신중";
             SendBtn.Text = (isSending) ? "중지" : "전송";
-        }
 
-        public static byte[] converterDemo(Image x) {
-            ImageConverter _imageConverter = new ImageConverter();
-            byte[] xColor = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
-            return xColor;
+            if (isSending)
+                cli = new TcpClient(IpBox.Text, Int32.Parse(PortBox.Text));
+            else { cli.Close(); cli = null; }
         }
 
         private void Timer2_Tick_1(object sender, EventArgs e) {

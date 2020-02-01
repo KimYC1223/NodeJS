@@ -2,9 +2,9 @@ let img = document.getElementById('webcamImg')
 let count = 1
 
 setInterval(() => {
-  img.src = `./IMG/test.bmp?time=${count}`
+  img.src = `./IMG/test.jpeg?time=${count}`
   count++
-},150)
+},1000)
 
 let btn = document.getElementById('sendingBtn');
 let checkboxs = document.getElementsByName('btn');

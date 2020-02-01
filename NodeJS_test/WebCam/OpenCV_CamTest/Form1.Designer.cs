@@ -150,9 +150,9 @@
             this.label6.ForeColor = System.Drawing.Color.HotPink;
             this.label6.Location = new System.Drawing.Point(350, 302);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 12);
+            this.label6.Size = new System.Drawing.Size(84, 12);
             this.label6.TabIndex = 10;
-            this.label6.Text = "연결대기";
+            this.label6.Text = "JPEG Byte :";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Form1
