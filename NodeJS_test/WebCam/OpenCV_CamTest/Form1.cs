@@ -20,6 +20,7 @@ namespace OpenCV_CamTest
 		IplImage m_cvImg;
         CvCapture m_cvCap;
         TcpClient cli;
+        NetworkStream stream = null;
 
         bool isSending = false;
 
@@ -50,11 +51,21 @@ namespace OpenCV_CamTest
 
             if (!isSending && cli == null) return;
 
-            byte[] sendingData = JPEPByteArray(pictureBox1.Image);
-            label6.Text = "JPEG Byte : " + sendingData.Length;
-            NetworkStream stream = cli.GetStream();
-            stream.Write(sendingData, 0, sendingData.Length);
-            stream.Close();
+            try {
+                byte[] sendingData = JPEPByteArray(pictureBox1.Image);
+                label6.Text = "JPEG Byte : " + sendingData.Length;
+                stream = cli.GetStream();
+                stream.Write(sendingData, 0, sendingData.Length);
+            } catch (System.InvalidOperationException) {
+                isSending = false;
+                label5.Text = "연결대기";
+                SendBtn.Text = "중지";
+                isLocalhost.Enabled = true;
+                if (stream != null) stream.Close();
+                cli.Close(); cli = null;
+                label6.Text = "호스트와 연결 할 수 없습니다.";
+            }
+            
         }
 
         public byte[] JPEPByteArray(Image image) {
@@ -74,8 +85,16 @@ namespace OpenCV_CamTest
             isLocalhost.Enabled = !isSending;
 
             if (isSending)
-                cli = new TcpClient(IpBox.Text, Int32.Parse(PortBox.Text));
-            else { cli.Close(); cli = null; }
+                try {
+                    cli = new TcpClient(IpBox.Text, Int32.Parse(PortBox.Text));
+                } catch (SocketException) {
+                    isSending = false;
+                    label5.Text = "연결대기";
+                    SendBtn.Text = "중지";
+                    isLocalhost.Enabled = true;
+                    label6.Text = "호스트와 연결 할 수 없습니다.";
+                }
+            else { if (stream != null) stream.Close(); cli.Close(); cli = null; }
         }
 
         private void Timer2_Tick_1(object sender, EventArgs e) {

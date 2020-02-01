@@ -1,8 +1,8 @@
 module.exports = function (app) {
+  var fs            = require('fs')
   let dgram         = require('dgram')
   let net           = require('net');
   let sendingSocket = dgram.createSocket('udp4');
-
   //====================================================================================
   //  버튼 클릭 처리
   //====================================================================================
@@ -21,17 +21,18 @@ module.exports = function (app) {
   })
   //====================================================================================
 
+  let bufferMaxLen = 10;
+  let currentPos = 0;
   var webcamPort = process.env.PORT || 15002;
   var server = net.createServer(function(socket) {
       // connection event
       console.log('클라이언트 접속');
       socket.on('data', function(chunk) {
-          fs.writeFile(`${__dirname}/HTML/IMG/test.jpeg`,msg,function(error){if(error)console.log(error)})
+          fs.writeFile(`${__dirname}/HTML/IMG/test.jpeg`,chunk,function(error){if(error)console.log(error)})
       });
       socket.on('end', function() {console.log('클라이언트 접속 종료');});
   });
-
-  server.on('listening', function() { console.log('Server is listening... Port : '); });
+  server.on('listening', function() { console.log(`Server is listening... Port : ${webcamPort}`); });
   server.on('close', function() { console.log('Server closed');});
-
+  server.listen(webcamPort);
 }

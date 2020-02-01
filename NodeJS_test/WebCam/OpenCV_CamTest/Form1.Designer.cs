@@ -103,7 +103,7 @@
             this.PortBox.Name = "PortBox";
             this.PortBox.Size = new System.Drawing.Size(42, 21);
             this.PortBox.TabIndex = 5;
-            this.PortBox.Text = "15001";
+            this.PortBox.Text = "15002";
             // 
             // label3
             // 
