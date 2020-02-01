@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.isLocalhost = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             // 
             // IpBox
             // 
-            this.IpBox.Location = new System.Drawing.Point(91, 297);
+            this.IpBox.Location = new System.Drawing.Point(229, 295);
             this.IpBox.Name = "IpBox";
             this.IpBox.Size = new System.Drawing.Size(124, 21);
             this.IpBox.TabIndex = 2;
@@ -80,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Info;
-            this.label1.Location = new System.Drawing.Point(12, 302);
+            this.label1.Location = new System.Drawing.Point(150, 300);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 12);
             this.label1.TabIndex = 3;
@@ -90,7 +91,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(232, 302);
+            this.label2.Location = new System.Drawing.Point(384, 302);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 4;
@@ -98,7 +99,7 @@
             // 
             // PortBox
             // 
-            this.PortBox.Location = new System.Drawing.Point(291, 297);
+            this.PortBox.Location = new System.Drawing.Point(443, 297);
             this.PortBox.Name = "PortBox";
             this.PortBox.Size = new System.Drawing.Size(42, 21);
             this.PortBox.TabIndex = 5;
@@ -136,7 +137,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.LightSkyBlue;
-            this.label5.Location = new System.Drawing.Point(328, 20);
+            this.label5.Location = new System.Drawing.Point(180, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 12);
             this.label5.TabIndex = 9;
@@ -148,12 +149,24 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.HotPink;
-            this.label6.Location = new System.Drawing.Point(350, 302);
+            this.label6.Location = new System.Drawing.Point(180, 28);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 12);
+            this.label6.Size = new System.Drawing.Size(81, 12);
             this.label6.TabIndex = 10;
-            this.label6.Text = "JPEG Byte :";
+            this.label6.Text = "JPEG 길이 :";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // isLocalhost
+            // 
+            this.isLocalhost.AutoSize = true;
+            this.isLocalhost.ForeColor = System.Drawing.SystemColors.Control;
+            this.isLocalhost.Location = new System.Drawing.Point(16, 300);
+            this.isLocalhost.Name = "isLocalhost";
+            this.isLocalhost.Size = new System.Drawing.Size(112, 16);
+            this.isLocalhost.TabIndex = 12;
+            this.isLocalhost.Text = "로컬호스트 전송";
+            this.isLocalhost.UseVisualStyleBackColor = true;
+            this.isLocalhost.CheckedChanged += new System.EventHandler(this.isLocalhost_CheckedChanged);
             // 
             // Form1
             // 
@@ -161,6 +174,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(500, 326);
+            this.Controls.Add(this.isLocalhost);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -197,6 +211,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox isLocalhost;
     }
 }
 

@@ -67,11 +67,11 @@ namespace OpenCV_CamTest
             }
         }
 
-        
         private void SendBtn_Click(object sender, EventArgs e) {
             isSending = !isSending;
             label5.Text = (isSending)? "연결대기":"송신중";
             SendBtn.Text = (isSending) ? "중지" : "전송";
+            isLocalhost.Enabled = !isSending;
 
             if (isSending)
                 cli = new TcpClient(IpBox.Text, Int32.Parse(PortBox.Text));
@@ -84,6 +84,18 @@ namespace OpenCV_CamTest
 
         private void Label3_Click(object sender, EventArgs e) {
 
+        }
+
+        private string tempString;
+        private void isLocalhost_CheckedChanged(object sender, EventArgs e) {
+            if (isLocalhost.Checked) {
+                tempString = IpBox.Text;
+                IpBox.Text = "127.0.0.1";
+                IpBox.Enabled = false;
+            } else {
+                IpBox.Text = tempString;
+                IpBox.Enabled = true;
+            }
         }
     }
 }
