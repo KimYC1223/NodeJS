@@ -19,6 +19,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })); //
 
 require('./routes.js')(app);
+require('./webcamHandler.js')(app);
 
 app.use(express.static(path.join(__dirname, './HTML')));
 
