@@ -36,8 +36,8 @@ namespace OpenCV_CamTest
             //m_cvCap.FrameWidth = 472;
             //m_cvCap.FrameHeight = 240;
 
-            m_cvCap.FrameWidth = 200;
-            m_cvCap.FrameHeight = 150;
+            m_cvCap.FrameWidth = 10;
+            m_cvCap.FrameHeight = 20;
 
 
             //타이머 설정
@@ -59,8 +59,28 @@ namespace OpenCV_CamTest
             try {
                 byte[] sendingData = JPEPByteArray(pictureBox1.Image);
                 label6.Text = "JPEG Byte : " + sendingData.Length;
-                stream = cli.GetStream();
-                stream.Write(sendingData, 0, sendingData.Length);
+                //stream = cli.GetStream();
+
+                int dataLen = sendingData.Length / 1472;
+                int remain = sendingData.Length % 1472;
+                label6.Text = sendingData.Length.ToString() + " ... " + dataLen + " / " + remain;
+
+                for (int i = 0; i <= dataLen; i++) {
+                    if (i == dataLen) {
+                        if (remain != 0) {
+                            byte[] datagram = new byte[remain];
+                            Buffer.BlockCopy(sendingData, 1472 * i, datagram, 0, remain);
+                            stream.Write(datagram, 0, datagram.Length);
+                            stream.Flush();
+                        }
+                    } else {
+                        byte[] datagram = new byte[1472];
+                        Buffer.BlockCopy(sendingData, 1472 * i, datagram, 0, 1472);
+                        stream.Write(datagram, 0, datagram.Length);
+                        stream.Flush();
+                    }
+                }
+
             } catch (System.InvalidOperationException) {
                 isSending = false;
                 label5.Text = "연결대기";
@@ -100,6 +120,7 @@ namespace OpenCV_CamTest
             if (isSending)
                 try {
                     cli = new TcpClient(IpBox.Text, Int32.Parse(PortBox.Text));
+                    stream = cli.GetStream();
                 } catch (SocketException) {
                     isSending = false;
                     label5.Text = "연결대기";

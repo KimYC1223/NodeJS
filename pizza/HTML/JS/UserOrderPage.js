@@ -6,6 +6,7 @@ let frameMax = 9;
 let frameBuffer = 2;
 
 setInterval(() => {
+  /*
   jQuery.ajax({
 		type:'GET',						      // POST 방식으로
 		url: '/checkFrame',		      // saveVideo.php로 전송
@@ -30,6 +31,9 @@ setInterval(() => {
 		}
 	});
 
+  */
+  img.src = `./IMG/test.jpeg?time=${count}`
+  count++
 },100)
 
 let btn = document.getElementById('sendingBtn');
