@@ -24,11 +24,18 @@ module.exports = function (app) {
   let bufferMaxLen = 10;
   let currentPos = 0;
   var webcamPort = process.env.PORT || 15002;
+  let frame = 0;
+  let frameMax = 9;
   var server = net.createServer(function(socket) {
       // connection event
       console.log('클라이언트 접속');
       socket.on('data', function(chunk) {
-          fs.writeFile(`${__dirname}/HTML/IMG/test.jpeg`,chunk,function(error){if(error)console.log(error)})
+	  var start = Date.now();
+	  frame = (frame > frameMax) ? 0 : frame + 1;
+          fs.writeFile(`${__dirname}/HTML/IMG/test_${frame}.jpeg`,chunk,function(error){if(error)console.log(error)})
+	  var end = Date.now();
+	  var timeSpending = end - start;
+	  console.log(`Msg recieving! (test_${frame}.jpeg) ${timeSpending}`);
       });
       socket.on('end', function() {console.log('클라이언트 접속 종료');});
   });
