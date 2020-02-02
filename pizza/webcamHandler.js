@@ -2,6 +2,7 @@ module.exports = function (app) {
   var fs            = require('fs')
   let dgram         = require('dgram')
   let net           = require('net');
+  let socket        = dgram.createSocket('udp4')
   let sendingSocket = dgram.createSocket('udp4');
   //====================================================================================
   //  버튼 클릭 처리
@@ -27,22 +28,42 @@ module.exports = function (app) {
   let frame = 0;
   let frameMax = 9;
 
+  let portUDP = process.env.PORT || 15001;
+  socket.bind(portUDP)
+  socket.on('listening', () => { console.log('listening event : 15001') })
   let frameCount = 0;
   let flag = false;
   let frameSmallCount = 0;
+  socket.on('message', (msg, rinfo) => {
+    if (flag == false) {
+      if (msg.length != 1472){
+        frameCount ++;
+        frameSmallCount = 0;
+        console.log(frameCount + `frame load Done... (${msg.length}) [${frameSmallCount}]`);
+        fs.writeFile(`${__dirname}/HTML/IMG/test.jpeg`,msg,function(error){if(error)console.log(error)})
+      } else {
+        frameCount ++;
+        frameSmallCount = 0;
+        console.log(frameCount + `frame load Start... (${msg.length}) [${frameSmallCount}]`);
+        fs.writeFile(`${__dirname}/HTML/IMG/test.jpeg`,msg,function(error){if(error)console.log(error)})
+        flag = true;
+      }
+    } else {
+      if (msg.length == 1472) {
+        frameSmallCount++;
+        console.log(frameCount + `frame loading... (1472) [${frameSmallCount}]`);
+        fs.appendFile(`${__dirname}/HTML/IMG/test.jpeg`,msg,function(error){if(error)console.log(error)})
+      } else {
+        frameSmallCount++;
+        console.log(frameCount + `frame load Done... (${msg.length}) [${frameSmallCount}]`);
+        fs.appendFile(`${__dirname}/HTML/IMG/test.jpeg`,msg,function(error){if(error)console.log(error)})
+        flag = false;
+      }
+    }
 
-  var server = net.createServer(function(socket) {
-      // connection event
-      console.log('클라이언트 접속');
-      socket.on('data', function(msg) {
-          fs.writeFile(`${__dirname}/HTML/IMG/test.jpeg`,msg,function(error){if(error)console.log(error)})
-          console.log(`${msg.length}`);
-      });
-      socket.on('end', function() {console.log('클라이언트 접속 종료');});
-  });
-  server.on('listening', function() { console.log(`Server is listening... Port : ${webcamPort}`); });
-  server.on('close', function() { console.log('Server closed');});
-  server.listen(webcamPort);
+  })
+  socket.on('close', () => { console.log('close event') })
+
 
   app.get('/checkFrame', (req,res) => {
     res.send(`${frame}`);

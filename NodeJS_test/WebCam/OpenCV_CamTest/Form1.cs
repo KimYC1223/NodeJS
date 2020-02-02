@@ -33,8 +33,8 @@ namespace OpenCV_CamTest
 		{
 			m_cvCap = CvCapture.FromCamera(0);
 
-            m_cvCap.FrameWidth = 472;
-            m_cvCap.FrameHeight = 240;
+            m_cvCap.FrameWidth = 10;
+            m_cvCap.FrameHeight = 20;
 
             //m_cvCap.FrameWidth = 10;
             //m_cvCap.FrameHeight = 20;
@@ -63,28 +63,44 @@ namespace OpenCV_CamTest
                 int dataLen = sendingData.Length / 1472;
                 int remain = sendingData.Length % 1472;
                 //label6.Text = sendingData.Length.ToString() + " ... " + dataLen + " / " + remain;
-                stream.Write(sendingData, 0, sendingData.Length);
-                
+                //stream.Write(sendingData, 0, sendingData.Length);
+
+                UdpClient cli = new UdpClient();
+
+                for (int i = 0; i <= dataLen; i++) {
+                    if (i == dataLen) {
+                           
+                        if (remain != 0) {
+                            byte[] datagram = new byte[remain]; 
+                            Buffer.BlockCopy(sendingData, 1472 * i, datagram, 0, remain);
+                            cli.Send(datagram, datagram.Length, IpBox.Text, 15001);
+                        }
+                    }else {
+                        byte[] datagram = new byte[1472];
+                        Buffer.BlockCopy(sendingData, 1472 * i, datagram, 0, 1472);
+                        cli.Send(datagram, datagram.Length, IpBox.Text, 15001);
+                        }
+                    }
 
             } catch (System.InvalidOperationException) {
-                isSending = false;
-                label5.Text = "연결대기";
-                SendBtn.Text = "전송";
-                isLocalhost.Enabled = true;
-                if (stream != null) stream.Close();
-                cli.Close(); cli = null;
-                label6.Text = "호스트와 연결 할 수 없습니다.";
+                //isSending = false;
+                //label5.Text = "연결대기";
+                //SendBtn.Text = "전송";
+                //isLocalhost.Enabled = true;
+                //if (stream != null) stream.Close();
+                //cli.Close(); cli = null;
+                //label6.Text = "호스트와 연결 할 수 없습니다.";
             } catch (System.IO.IOException) {
-                isSending = false;
-                label5.Text = "연결대기";
-                SendBtn.Text = "전송";
-                isLocalhost.Enabled = true;
-                if (stream != null) stream.Close();
-                cli.Close(); cli = null;
-                label6.Text = "호스트와 연결 할 수 없습니다.";
+                //isSending = false;
+                //label5.Text = "연결대기";
+                //SendBtn.Text = "전송";
+                //isLocalhost.Enabled = true;
+                //if (stream != null) stream.Close();
+                //cli.Close(); cli = null;
+                //label6.Text = "호스트와 연결 할 수 없습니다.";
             }
 
-            }
+        }
 
         public byte[] JPEPByteArray(Image image) {
             using (MemoryStream memoryStream = new MemoryStream()) {
@@ -102,18 +118,18 @@ namespace OpenCV_CamTest
             SendBtn.Text = (isSending) ? "중지" : "전송";
             isLocalhost.Enabled = !isSending;
 
-            if (isSending)
-                try {
-                    cli = new TcpClient(IpBox.Text, Int32.Parse(PortBox.Text));
-                    stream = cli.GetStream();
-                } catch (SocketException) {
-                    isSending = false;
-                    label5.Text = "연결대기";
-                    SendBtn.Text = "전송";
-                    isLocalhost.Enabled = true;
-                    label6.Text = "호스트와 연결 할 수 없습니다.";
-                }
-            else { if (stream != null) stream.Close(); cli.Close(); cli = null; }
+            //if (isSending)
+            //    try {
+            //        cli = new TcpClient(IpBox.Text, Int32.Parse(PortBox.Text));
+            //        stream = cli.GetStream();
+            //    } catch (SocketException) {
+            //        isSending = false;
+            //        label5.Text = "연결대기";
+            //        SendBtn.Text = "전송";
+            //        isLocalhost.Enabled = true;
+            //        label6.Text = "호스트와 연결 할 수 없습니다.";
+            //    }
+            //else { if (stream != null) stream.Close(); cli.Close(); cli = null; }
         }
 
         private void Timer2_Tick_1(object sender, EventArgs e) {
