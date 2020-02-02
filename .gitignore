@@ -1,4 +1,6 @@
 pizza\HTML\IMG\test.bmp
+pizza\HTML\IMG\*.jpg
+pizza\HTML\IMG\*.jpeg
 pizza\HTML\data.txt
 pizza\mysqlScript.js
 NodeJS_test\Debug\data.txt

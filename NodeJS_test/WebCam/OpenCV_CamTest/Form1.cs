@@ -36,7 +36,7 @@ namespace OpenCV_CamTest
             m_cvCap.FrameHeight = 240;
 
 			//타이머 설정
-			timer1.Interval = 33;
+			timer1.Interval = 150;
 			timer1.Enabled = true;
         }
 
