@@ -36,7 +36,7 @@ namespace OpenCV_CamTest
             m_cvCap.FrameHeight = 240;
 
 			//타이머 설정
-			timer1.Interval = 120;
+			timer1.Interval = 33;
 			timer1.Enabled = true;
         }
 
@@ -64,9 +64,17 @@ namespace OpenCV_CamTest
                 if (stream != null) stream.Close();
                 cli.Close(); cli = null;
                 label6.Text = "호스트와 연결 할 수 없습니다.";
+            } catch (System.IO.IOException) {
+                isSending = false;
+                label5.Text = "연결대기";
+                SendBtn.Text = "중지";
+                isLocalhost.Enabled = true;
+                if (stream != null) stream.Close();
+                cli.Close(); cli = null;
+                label6.Text = "호스트와 연결 할 수 없습니다.";
             }
-            
-        }
+
+            }
 
         public byte[] JPEPByteArray(Image image) {
             using (MemoryStream memoryStream = new MemoryStream()) {

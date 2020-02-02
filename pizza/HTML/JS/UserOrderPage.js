@@ -4,7 +4,7 @@ let count = 1
 setInterval(() => {
   img.src = `./IMG/test.jpeg?time=${count}`
   count++
-},200)
+},66)
 
 let btn = document.getElementById('sendingBtn');
 let checkboxs = document.getElementsByName('btn');
