@@ -42,4 +42,8 @@ module.exports = function (app) {
   server.on('listening', function() { console.log(`Server is listening... Port : ${webcamPort}`); });
   server.on('close', function() { console.log('Server closed');});
   server.listen(webcamPort);
+
+  app.get('/checkFrame', (req,res) => {
+    res.send(`${frame}`);
+  })
 }

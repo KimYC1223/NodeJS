@@ -1,10 +1,36 @@
 let img = document.getElementById('webcamImg')
 let count = 1
+let currentFrame= 0;
+let endFrame = 0;
+let frameMax = 9;
+let frameBuffer = 2;
 
 setInterval(() => {
-  img.src = `./IMG/test.jpeg?time=${count}`
-  count++
-},66)
+  jQuery.ajax({
+		type:'GET',						      // POST 방식으로
+		url: '/checkFrame',		      // saveVideo.php로 전송
+		processData:false,					// 기본 설정
+		contentType: false,					// 기본 설정
+		data: '',							// FormData 전송
+		success: function(msg) {			// 성공시
+      endFrame = Number(msg)
+
+      var len1 = endFrame - currentFrame;
+      var len2 = (frameMax + 1 + endFrame) - currentFrame;
+      var len = (currentFrame < endFrame) ? len1 : len2;
+
+      console.log(`${endFrame}`)
+      if (len2 > frameBuffer) {
+        img.src = `./IMG/test_${currentFrame}.jpeg?time=${count}`
+        currentFrame = (currentFrame >= frameMax ) ? 0 : currentFrame +1;
+        count++;
+      }
+		},error: function(msg) {			// 실패시
+			console.log = msg;	// 메세지 출력
+		}
+	});
+
+},100)
 
 let btn = document.getElementById('sendingBtn');
 let checkboxs = document.getElementsByName('btn');

@@ -32,11 +32,16 @@ namespace OpenCV_CamTest
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			m_cvCap = CvCapture.FromCamera(0);
-			m_cvCap.FrameWidth = 472;
-            m_cvCap.FrameHeight = 240;
 
-			//타이머 설정
-			timer1.Interval = 150;
+            //m_cvCap.FrameWidth = 472;
+            //m_cvCap.FrameHeight = 240;
+
+            m_cvCap.FrameWidth = 200;
+            m_cvCap.FrameHeight = 150;
+
+
+            //타이머 설정
+            timer1.Interval = 150;
 			timer1.Enabled = true;
         }
 
@@ -59,7 +64,7 @@ namespace OpenCV_CamTest
             } catch (System.InvalidOperationException) {
                 isSending = false;
                 label5.Text = "연결대기";
-                SendBtn.Text = "중지";
+                SendBtn.Text = "전송";
                 isLocalhost.Enabled = true;
                 if (stream != null) stream.Close();
                 cli.Close(); cli = null;
@@ -67,7 +72,7 @@ namespace OpenCV_CamTest
             } catch (System.IO.IOException) {
                 isSending = false;
                 label5.Text = "연결대기";
-                SendBtn.Text = "중지";
+                SendBtn.Text = "전송";
                 isLocalhost.Enabled = true;
                 if (stream != null) stream.Close();
                 cli.Close(); cli = null;
@@ -98,7 +103,7 @@ namespace OpenCV_CamTest
                 } catch (SocketException) {
                     isSending = false;
                     label5.Text = "연결대기";
-                    SendBtn.Text = "중지";
+                    SendBtn.Text = "전송";
                     isLocalhost.Enabled = true;
                     label6.Text = "호스트와 연결 할 수 없습니다.";
                 }
