@@ -18,8 +18,13 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })); //
 
+
 require('./routes.js')(app);
-require('./webcamHandler.js')(app);
+require('./buttonHandler.js')();
+
+let socketServer = http.createServer(app);
+let io = require('socket.io').listen(socketServer);
+socketServer.listen(15001);
 
 app.use(express.static(path.join(__dirname, './HTML')));
 

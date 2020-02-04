@@ -1,41 +1,3 @@
-let img = document.getElementById('webcamImg')
-let count = 1
-let currentFrame= 0;
-let endFrame = 0;
-let frameMax = 9;
-let frameBuffer = 2;
-
-setInterval(() => {
-  /*
-  jQuery.ajax({
-		type:'GET',						      // POST 방식으로
-		url: '/checkFrame',		      // saveVideo.php로 전송
-		processData:false,					// 기본 설정
-		contentType: false,					// 기본 설정
-		data: '',							// FormData 전송
-		success: function(msg) {			// 성공시
-      endFrame = Number(msg)
-
-      var len1 = endFrame - currentFrame;
-      var len2 = (frameMax + 1 + endFrame) - currentFrame;
-      var len = (currentFrame < endFrame) ? len1 : len2;
-
-      console.log(`${endFrame}`)
-      if (len2 > frameBuffer) {
-        img.src = `./IMG/test_${currentFrame}.jpeg?time=${count}`
-        currentFrame = (currentFrame >= frameMax ) ? 0 : currentFrame +1;
-        count++;
-      }
-		},error: function(msg) {			// 실패시
-			console.log = msg;	// 메세지 출력
-		}
-	});
-
-  */
-  img.src = `./IMG/test.jpeg?time=${count}`
-  count++
-},150)
-
 let btn = document.getElementById('sendingBtn');
 let checkboxs = document.getElementsByName('btn');
 let logging = document.getElementById('logging');
@@ -94,19 +56,11 @@ checkboxs[2].addEventListener('change', checkChange)
 checkboxs[3].addEventListener('change', checkChange)
 checkboxs[4].addEventListener('change', checkChange)
 
-btn.addEventListener('click', () => {
-  let query = 'str=' + str;
+var serverURL = 'localhost:15001';
+let socket = io.connect(serverURL);
 
-  jQuery.ajax({
-		type:'GET',						// POST 방식으로
-		url: '/sendingUDP',		// saveVideo.php로 전송
-		processData:false,					// 기본 설정
-		contentType: false,					// 기본 설정
-		data: query,							// FormData 전송
-		success: function(msg) {			// 성공시
-			logging.innerHTML = msg;	// 메세지 출력
-		},error: function(msg) {			// 실패시
-			logging.innerHTML = msg;	// 메세지 출력
-		}
-	});
-})
+
+$('#sendingBtn').click(function() {
+  socket.emit('buttonClick', { name : name, message : str });
+  console.log('sending!',str);
+});
