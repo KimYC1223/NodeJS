@@ -42,4 +42,8 @@ module.exports = function (app) {
   app.get('/UserOrderPage', (req,res) => {
     res.render(__dirname+'/HTML/UserOrderPage.ejs')
   })
+
+  app.get('/UserIndexPage', (req,res) => {
+    res.render(__dirname+'/HTML/UserIndex.ejs')
+  })
 }
