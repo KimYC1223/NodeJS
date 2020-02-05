@@ -9,9 +9,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
+  <script data-require="angularjs@1.5.7" data-semver="1.5.7" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
   <title>Document</title>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="MyController">
   <div class="bg"></div>
 
   <div class ="header">
@@ -22,7 +24,7 @@
     <div class="topDiv">
       <table>
         <tr>
-          <td class ="loginInfo">###님 반갑습니다.</td>
+          <td class ="loginInfo">{{name}}님 반갑습니다.</td>
           <td class ="topButton">
             <a href="/userCart">배송 조회</a>
           </td>
@@ -37,23 +39,39 @@
     </div>
 
     <div class="mainContent">
-      <img src="./IMG/test.jpeg" class="CamPicture" id="webcamImg" name="webcamImg">
-      <input type="checkbox" class="check" name="btn" value="btn1" id="btn1">
-      <label for="btn1">BUTTON 1</label>
+      <input type="radio" class="radio" name="btn" value="btn1" id="btn1" checked ng-click="modifyMsg()">
+      <label for="btn1">모터 제어</label>
 
-      <input type="checkbox" class="check" name="btn" value="btn2" id="btn2">
-      <label for="btn2">BUTTON 2</label>
+      <input type="radio" class="radio" name="btn" value="btn2" id="btn2" ng-click="modifyMsg()">
+      <label for="btn2">LED 동작 변경</label>
 
-      <input type="checkbox" class="check" name="btn" value="btn3" id="btn3">
-      <label for="btn3">BUTTON 3</label>
+      <div class="controlDiv">
+        <div class="controller">
+          <span class="ctrlTop" ng-click="plusBtn()">명령어 추가</span>
+        </div>
 
-      <input type="checkbox" class="check" name="btn" value="btn4" id="btn4">
-      <label for="btn4">BUTTON 4</label>
+        <table class="orderList">
+          <tr class="orderListHeader">
+            <td width="40px">번호</td>
+            <td>타겟</td>
+            <td>값</td>
+            <td width="70px">제거</td>
+          </tr>
+          <tr ng-repeat="command in commandList">
+            <td>{{$index + 1}}</td>
+            <td>
+              <input class="commandInput" type="number" ng-change="modifyMsg()" ng-model="command.target">
+            </td>
+            <td>
+              <input class="commandInput" type="number" ng-change="modifyMsg()" ng-model="command.value">
+            </td>
+            <td><input type="button" class="removeBtn" name="removeBtn" value="제거" ng-click="minusBtn($index)"></td>
+          </tr>
+        </table>
+      </div>
 
-      <input type="checkbox" class="check" name="btn" value="btn5" id="btn5">
-      <label for="btn5">BUTTON 5</label>
       <span class="logText" id="logging">A log will print here.</span>
-      <div class="sendBtn" id="sendingBtn">Send Data</div>
+      <div class="sendBtn" id="sendingBtn" ng-click="sendData()">Send Data</div>
 
 
     </div>

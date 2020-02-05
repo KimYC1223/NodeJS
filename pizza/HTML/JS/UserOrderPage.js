@@ -1,74 +1,58 @@
-let btn = document.getElementById('sendingBtn');
-let checkboxs = document.getElementsByName('btn');
-let logging = document.getElementById('logging');
+let app = angular.module('myApp',[]);
 
-let str = '00000'
+app.controller('MyController',['$scope',($scope)=> {
+  $scope.name = '김영찬';
+  $scope.commandList = [
+    {target:0,value:0}
+  ];
 
-let checkChange = (event) => {
-  str = ''
-  if (checkboxs[0] == event.target) {
-    if (checkboxs[0].checked) str += '1'
-    else str += '0'
-  } else {
-    if (checkboxs[0].checked) str += '1'
-    else str += '0'
+  $scope.str = ""
+
+  $scope.modifyMsg = () => {
+      var radios= document.getElementsByName('btn');
+      $scope.str = (radios[0].checked)? "move " : "light ";
+      $scope.str += `${$scope.commandList.length} `;
+
+      $scope.commandList.forEach((item,i) => {
+        $scope.str += item.target + " "
+        $scope.str += item.value + " "
+      })
+
+      let logging = document.getElementById('logging');
+      logging.innerHTML = `Msg is ... [ ${$scope.str}]`;
   }
 
-  if (checkboxs[1] == event.target) {
-    if (checkboxs[1].checked) str += '1'
-    else str += '0'
-  } else {
-    if (checkboxs[1].checked) str += '1'
-    else str += '0'
+  $scope.plusBtn = () => {
+    $scope.commandList.push({target:0,value:0})
+    $scope.modifyMsg()
+  };
+
+  $scope.minusBtn = (index) => {
+    if ($scope.commandList.length > 1) {
+      console.log(index)
+      $scope.commandList.splice(index,1);
+    }
+    $scope.modifyMsg()
   }
 
-  if (checkboxs[2] == event.target) {
-    if (checkboxs[2].checked) str += '1'
-    else str += '0'
-  } else {
-    if (checkboxs[2].checked) str += '1'
-    else str += '0'
+  $scope.sendData = () => {
+    let string = 'order=' + $scope.str;
+
+    jQuery.ajax({
+  		type:'GET',						// POST 방식으로
+  		url: '/sendBtnData',		// saveVideo.php로 전송
+  		processData:false,					// 기본 설정
+  		contentType: false,					// 기본 설정
+  		data: string,							// FormData 전송
+  		success: function(msg) {			// 성공시
+        let logging = document.getElementById('logging');
+  			logging.innerHTML = msg;	// 메세지 출력
+  		},error: function(msg) {			// 실패시
+        let logging = document.getElementById('logging');
+  			logging.innerHTML = msg;	// 메세지 출력
+  		}
+  	});
   }
 
-  if (checkboxs[3] == event.target) {
-    if (checkboxs[3].checked) str += '1'
-    else str += '0'
-  } else {
-    if (checkboxs[3].checked) str += '1'
-    else str += '0'
-  }
-
-  if (checkboxs[4] == event.target) {
-    if (checkboxs[4].checked) str += '1'
-    else str += '0'
-  } else {
-    if (checkboxs[4].checked) str += '1'
-    else str += '0'
-  }
-
-  logging.innerHTML = "Button state = " + str;
-  console.log(str)
-}
-
-checkboxs[0].addEventListener('change', checkChange)
-checkboxs[1].addEventListener('change', checkChange)
-checkboxs[2].addEventListener('change', checkChange)
-checkboxs[3].addEventListener('change', checkChange)
-checkboxs[4].addEventListener('change', checkChange)
-
-btn.addEventListener('click', () => {
-  let query = 'order=' + str;
-
-  jQuery.ajax({
-		type:'GET',						// POST 방식으로
-		url: '/sendBtnData',		// saveVideo.php로 전송
-		processData:false,					// 기본 설정
-		contentType: false,					// 기본 설정
-		data: query,							// FormData 전송
-		success: function(msg) {			// 성공시
-			logging.innerHTML = msg;	// 메세지 출력
-		},error: function(msg) {			// 실패시
-			logging.innerHTML = msg;	// 메세지 출력
-		}
-	});
-})
+  $scope.modifyMsg();
+}])

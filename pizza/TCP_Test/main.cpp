@@ -41,10 +41,15 @@ int main(int argc, char* argv[]) {
 		if (connect(hSocket, (SOCKADDR*)&servAddr, sizeof(servAddr)) == SOCKET_ERROR) //생성된 소켓을 바탕으로 서버에 연결요청을 하고 있다
 			ErrorHandling("connect() error!");
 
-		strLen = recv(hSocket, message, sizeof(message) - 1, 0); //recv 함수 호출을 통해서 서버로부터 전송되는 데이터를 수신하고 있다.
-		if (strLen == -1)
-			ErrorHandling("read() error");
-		printf("Message from server:%s\n", message);
+		while (true) {
+			strLen = recv(hSocket, message, sizeof(message) - 1, 0); //recv 함수 호출을 통해서 서버로부터 전송되는 데이터를 수신하고 있다.
+			if (strLen == -1) {
+				ErrorHandling("read() error");
+				break;
+			}
+			printf("Message from server:%s\n", message);
+		}
+
 		closesocket(hSocket); //소켓 라이브러리 해제
 		WSACleanup();
 	}

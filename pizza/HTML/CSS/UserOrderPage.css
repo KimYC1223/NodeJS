@@ -150,21 +150,21 @@ label{
   transition: 0.2s;
 }
 
-input[type="checkbox"] {
+input[type="radio"] {
     display:none;
 }
 
-input[type="checkbox"] + label{
+input[type="radio"] + label{
     background-color:rgb(222, 177, 162);
     color: rgb(190, 137, 119)
 }
 
-input[type="checkbox"]:checked + label{
+input[type="radio"]:checked + label{
   background-color:rgb(213, 111, 5);
   color:rgb(133, 20, 9);
 }
 
-input[type="checkbox"]:hover + label{
+input[type="radio"]:hover + label{
   background-color:rgb(133, 20, 9);
   color:rgb(255, 255, 255);
 }
@@ -186,4 +186,72 @@ input[type="checkbox"]:hover + label{
 
 .sendBtn:hover {
   color:rgb(226, 187, 183);
+}
+
+.controlDiv {
+  margin-top: 5px;
+  height:45vh;
+  background-color: rgb(250, 238, 224);
+  overflow-y:scroll;
+  align-items: center;
+  text-align: center;
+  width:100%
+}
+
+.controlDiv::-webkit-scrollbar {
+    display: none;
+}
+
+.controlDiv .controller{
+  display: inline-block;
+  line-height: 5vh;
+  border-radius: 5px;
+  background-color: rgb(133, 20, 9);
+  width:calc( 100% - 20px);
+  margin: 5px 5px 5px 5px;
+}
+
+.controller span{
+  font-size: 20px;
+  color:white;
+  cursor: pointer;
+}
+
+.orderList tr{
+  line-height:12vh;
+  border: solid 1px rgb(224, 176, 145);
+}
+
+.orderList {
+  display: inline-table;
+  width: calc(100% - 22px);
+  border: solid 2px rgb(195, 95, 31);
+  border-collapse: collapse;
+}
+
+.orderList .orderListHeader {
+  background-color: rgb(195, 95, 31);
+  line-height: 4vh;
+  font-weight: bold;
+  color:white;
+}
+
+.removeBtn {
+  width: 60px;
+  height: 60px;
+  border: 0;
+  outline:0;
+  cursor:pointer;
+  background-color: rgb(241, 81, 22);
+  font-weight:bold;
+  color:white;
+}
+
+.commandInput {
+  border:0px;
+  outline:0px;
+  line-height: 36px;
+  font-size:18px;
+  text-align: center;
+  width:95%;
 }
