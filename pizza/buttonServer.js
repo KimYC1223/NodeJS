@@ -8,30 +8,16 @@ module.exports = function () {
   let port = 15003
 
   let server = net.createServer(function(socket) {
-    // connection event
-
-    let flag = true
-    sockets.forEach((item,i) => {
-      if (item == socket) {
-          flag = false
-      }
-    })
-    if (flag) {
-      sockets.push(socket);
-      console.log(`클라이언트 접속... 현재 클라이언트 수 : ${sockets.length}`)
-    }
-
-    socket.on('buttonClick', function(msg) {
-        console.log(`button Data : ${msg}`)
-
-        sockets.forEach((item,i) => {
-          socket.write(msg.toString())
-        })
-    })
-
     socket.on('data', function(msg) {
-        console.log(`Data : ${msg}`)
+      console.log(`button Data : ${msg}`)
+
+      sockets.forEach((item,i) => {
+        item.write(msg.toString()+'\0')
+      })
     })
+
+    sockets.push(socket);
+    console.log(`클라이언트 접속... 현재 클라이언트 수 : ${sockets.length}`)
 
     socket.on('end', function() {
         sockets.forEach((item,i) => {

@@ -56,11 +56,19 @@ checkboxs[2].addEventListener('change', checkChange)
 checkboxs[3].addEventListener('change', checkChange)
 checkboxs[4].addEventListener('change', checkChange)
 
-var serverURL = 'localhost:15001';
-let socket = io.connect(serverURL);
+btn.addEventListener('click', () => {
+  let query = 'order=' + str;
 
-
-$('#sendingBtn').click(function() {
-  socket.emit('buttonClick', { name : name, message : str });
-  console.log('sending!',str);
-});
+  jQuery.ajax({
+		type:'GET',						// POST 방식으로
+		url: '/sendBtnData',		// saveVideo.php로 전송
+		processData:false,					// 기본 설정
+		contentType: false,					// 기본 설정
+		data: query,							// FormData 전송
+		success: function(msg) {			// 성공시
+			logging.innerHTML = msg;	// 메세지 출력
+		},error: function(msg) {			// 실패시
+			logging.innerHTML = msg;	// 메세지 출력
+		}
+	});
+})

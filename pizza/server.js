@@ -20,11 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true })); //
 
 
 require('./routes.js')(app);
-require('./buttonHandler.js')();
-
-let socketServer = http.createServer(app);
-let io = require('socket.io').listen(socketServer);
-socketServer.listen(15001);
+require('./buttonServer.js')();
+require('./buttonSend.js')(app);
 
 app.use(express.static(path.join(__dirname, './HTML')));
 
