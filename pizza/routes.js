@@ -38,6 +38,10 @@ module.exports = function (app) {
     mysqlScript.loginProcess(req,res)
   })
 
+  app.get('/machineQuery', (req,res) => {
+    mysqlScript.machineQuery(req,res)
+  })
+
 
   app.get('/UserOrderPage', (req,res) => {
     res.render(__dirname+'/HTML/UserOrderPage.ejs')

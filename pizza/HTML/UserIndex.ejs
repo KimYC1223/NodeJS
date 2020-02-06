@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./CSS/UserIndex.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
   <script data-require="angularjs@1.5.7" data-semver="1.5.7" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
@@ -22,7 +22,7 @@
     <div class="topDiv">
       <table>
         <tr>
-          <td class ="loginInfo">###님 반갑습니다.</td>
+          <td class ="loginInfo">{{name}}님 반갑습니다.</td>
           <td class ="topButton">
             <a href="/userCart">배송 조회</a>
           </td>
@@ -37,9 +37,56 @@
     </div>
 
     <div class="mainContent">
-      <div id="map" style="width:100%;height:400px;"></div>
+      <div id="map" style="width:100%;height:30vh;"></div>
       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=424e67d36b5d47e99a94d855abd58ff5"></script>
       <script src="./JS/UserIndex.js"></script>
+
+      <div id="descriptionNothing" ng-hide="isClicked">
+        <table class="desc">
+          <tr>
+            <td width="40%">
+              <img src="./IMG/ICON/gio_Marker.png" width="100%">
+            </td>
+            <td>
+              <table class="descTable">
+                <tr><td class="descHead">
+                  &nbsp;
+                </td></tr>
+                <tr><td class="descBody">
+                  원하는 지점을 선택해주세요.
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="description" ng-show="isClicked">
+        <table class="desc">
+          <tr>
+            <td width="40%">
+              <img src="./IMG/ICON/machine.png" width="100%">
+            </td>
+            <td>
+              <table class="descTable">
+                <tr><td class="descHead">
+                  INFO
+                </td></tr>
+                <tr><td class="descBody">
+                  <table class="realDesc">
+                    <tr class="realDescTd">
+                      <td>{{spotName}}</td></tr><tr class="realDescTd">
+                      <td>{{machineName}}</td></tr><tr class="realDescTd">
+                      <td>{{address}}</td></tr><tr class="realDescTd">
+                      <td><span class="connectSpan"><a href="/UserOrderPage">접속하기</a></span></td></tr><tr class="realDescTd">
+                    </tr>
+                  </table>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <div class="footerDiv">
@@ -47,5 +94,6 @@
     </div>
   </div>
 
+  <link rel="stylesheet" href="./CSS/UserIndex.css">
 </body>
 </html>

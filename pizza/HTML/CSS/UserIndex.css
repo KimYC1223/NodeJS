@@ -131,3 +131,48 @@ a:hover{color:rgb(219, 193, 197)}
 .mainContent span{
   color:rgb(128, 128, 128);
 }
+
+.desc {
+  height: 30vh;
+  background-color: rgb(255, 225, 190);
+  width:100%;
+  margin-top: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.descTable {
+  text-align: center;
+  align-items: center;
+  width:95%;
+  border: 1px solid rgb(181, 55, 22);
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+
+.descHead{
+  background-color: rgb(181, 55, 22);
+  color:white;
+  line-height: 5vh;
+}
+
+.descBody{
+  height: 20vh;
+}
+
+.realDesc{
+  width:100%;
+  height:100%;
+}
+
+.realDescTd{
+  height:25%;
+}
+
+.connectSpan {
+  display:inline-block;
+  width:80%;
+  background-color: rgb(185, 82, 24);
+  line-height: 4vh;
+  cursor:pointer;
+}

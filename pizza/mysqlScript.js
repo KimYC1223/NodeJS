@@ -87,6 +87,16 @@ module.exports = (function() {
         });
 
         return;
+    },machineQuery: function (req,res) {
+        queryString = `SELECT * FROM machine`
+
+        connection.query(queryString, function(error,rows, fields) {
+          if(error) {console.log(error); alert('데이터베이스 접속불가. 관리자에게 문의하세요.'); return;}
+
+          res.send(rows)
+        });
+
+        return;
     }
   }
 })()
